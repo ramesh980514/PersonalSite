@@ -1,0 +1,666 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ramesh Senthil | Software Development Engineer</title>
+    
+    <!-- SEO Meta Tags -->
+    <meta name="description" content="Personal portfolio of Ramesh Senthil, Software Development Engineer specializing in C#, .NET, high-performance visualization systems, and Generative AI integrations. Certified AWS Cloud Practitioner & Azure Fundamentals.">
+    <meta name="keywords" content="Ramesh Senthil, Software Engineer, .NET Developer, WPF, C#, Azure, AWS, Generative AI, Bangalore, Philips India, Accenture">
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Ramesh Senthil | Software Development Engineer">
+    <meta property="og:description" content="Personal portfolio of Ramesh Senthil. 5+ years of experience in high-performance desktop apps, REST APIs, and Cloud/AI systems.">
+    <meta property="og:image" content="screenshot.png">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- CSS Stylesheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <!-- Lucide Icons CDN -->
+    <script src="https://cdn.jsdelivr.net/npm/lucide@0.475.0/dist/umd/lucide.min.js"></script>
+</head>
+<body>
+    <!-- Custom Premium Cursor -->
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+
+    <!-- Background glow elements for aesthetic depth -->
+    <div class="glow-bg glow-1"></div>
+    <div class="glow-bg glow-2"></div>
+
+    <!-- Header / Navigation Bar -->
+    <header class="navbar" id="navbar">
+        <div class="nav-container">
+            <a href="#home" class="nav-logo" id="navLogo">
+                <span class="logo-accent">R</span>amesh Senthil
+            </a>
+            
+            <nav class="nav-menu" id="navMenu">
+                <a href="#home" class="nav-link active" id="navLinkHome">Home</a>
+                <a href="#experience" class="nav-link" id="navLinkExperience">Experience</a>
+                <a href="#skills" class="nav-link" id="navLinkSkills">Skills</a>
+                <a href="#projects" class="nav-link" id="navLinkProjects">Projects</a>
+                <a href="#homelab" class="nav-link" id="navLinkHomelab">Homelab</a>
+                <a href="#certifications" class="nav-link" id="navLinkCertifications">Certifications</a>
+                <a href="#contact" class="nav-link" id="navLinkContact">Contact</a>
+                <a href="assets/docs/RameshResumeV9.pdf" download="Ramesh_Senthil_Resume.pdf" class="btn btn-secondary btn-nav-download" id="navDownloadBtn">
+                    <i data-lucide="download"></i> Resume
+                </a>
+            </nav>
+            
+            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
+                <i data-lucide="menu"></i>
+            </button>
+        </div>
+    </header>
+
+    <!-- Main Content Container -->
+    <main>
+        
+        <!-- Hero Section -->
+        <section id="home" class="hero-section section-padding">
+            <div class="container hero-grid">
+                <div class="hero-content fade-in-up">
+                    <span class="badge" id="heroBadge">Available for Opportunities</span>
+                    <h1 class="hero-title">
+                        Building High-Performance <span class="text-gradient">Desktop & Cloud</span> Systems
+                    </h1>
+                    <p class="hero-description">
+                        Hi, I'm <strong>Ramesh Senthil</strong>. I am a Software Development Engineer with 5.4+ years of experience building mission-critical healthcare applications, high-throughput REST APIs, and cutting-edge Generative AI integrations.
+                    </p>
+                    <div class="hero-actions">
+                        <a href="#contact" class="btn btn-primary" id="heroContactBtn">
+                            Get In Touch <i data-lucide="arrow-right"></i>
+                        </a>
+                        <a href="assets/docs/RameshResumeV9.pdf" download="Ramesh_Senthil_Resume.pdf" class="btn btn-secondary" id="heroDownloadBtn">
+                            Download Resume <i data-lucide="download"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- Graphic Card / Stats Container -->
+                <div class="hero-visual fade-in-up">
+                    <div class="glass-card visual-card">
+                        <div class="visual-header">
+                            <span class="dot red"></span>
+                            <span class="dot yellow"></span>
+                            <span class="dot green"></span>
+                            <span class="visual-title">sde-ramesh.json</span>
+                        </div>
+                        <div class="visual-body">
+<pre><code><span class="json-key">"name"</span>: <span class="json-val">"Ramesh Senthil"</span>,
+<span class="json-key">"role"</span>: <span class="json-val">"<span id="typingRole">Software Dev Engineer</span><span class="cursor-blink">|</span>"</span>,
+<span class="json-key">"location"</span>: <span class="json-val">"Bangalore, India"</span>,
+<span class="json-key">"github"</span>: <span class="json-val">"<a href="https://github.com/ramesh980514" target="_blank" rel="noopener noreferrer" style="color:inherit;text-decoration:none;">github.com/ramesh980514</a>"</span>,
+<span class="json-key">"cloudCertifications"</span>: [
+    <span class="json-val">"AWS Cloud Practitioner"</span>,
+    <span class="json-val">"Azure Fundamentals"</span>
+],
+<span class="json-key">"specialties"</span>: [
+    <span class="json-val">".NET Core"</span>, <span class="json-val">"WPF"</span>, <span class="json-val">"GenAI APIs"</span>,
+    <span class="json-val">"High-Throughput APIs"</span>
+]</code></pre>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Quick Stats Bar -->
+            <div class="container stats-bar fade-in-up delay-1">
+                <div class="stat-item">
+                    <h3 class="stat-number">5.4+</h3>
+                    <p class="stat-label">Years Experience</p>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <h3 class="stat-number">35%+</h3>
+                    <p class="stat-label">Rendering Speedup</p>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <h3 class="stat-number">50%+</h3>
+                    <p class="stat-label">API Throughput Boost</p>
+                </div>
+                <div class="stat-divider"></div>
+                <div class="stat-item">
+                    <h3 class="stat-number">3</h3>
+                    <p class="stat-label">Cloud/AI Badges</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Experience Section -->
+        <section id="experience" class="experience-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Career History</span>
+                    <h2 class="section-title">Professional Experience</h2>
+                    <p class="section-subtitle">A timeline of my software engineering career and technical impacts.</p>
+                </div>
+                
+                <div class="timeline">
+                    <!-- Item 1: Philips / Sutherland -->
+                    <div class="timeline-item left-item fade-in-up">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card timeline-card">
+                            <span class="timeline-date">04/2025 - Present</span>
+                            <h3 class="timeline-role">Software Design Engineer</h3>
+                            <h4 class="timeline-company">Sutherland Healthcare Solutions - Philips India</h4>
+                            <p class="timeline-location"><i data-lucide="map-pin"></i> Bangalore, India</p>
+                            <ul class="timeline-bullets">
+                                <li>Developed, enhanced, and maintained the world's largest **Radiology Information System** using C# .NET and WPF.</li>
+                                <li>Enhanced **Nuclear Medicine visualization features**, improving image rendering speed by **35%** and increasing quantitative analysis accuracy.</li>
+                                <li>Collaborated with cross-functional teams to integrate **third-party clinical apps**, building an integrated platform supporting modular plug-and-play clinical imaging applications.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 2: Accenture -->
+                    <div class="timeline-item right-item fade-in-up">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card timeline-card">
+                            <span class="timeline-date">08/2020 - 04/2025</span>
+                            <h3 class="timeline-role">Software Development Engineer</h3>
+                            <h4 class="timeline-company">Accenture</h4>
+                            <p class="timeline-location"><i data-lucide="map-pin"></i> Bangalore, India</p>
+                            <ul class="timeline-bullets">
+                                <li>Delivered high-performance WPF desktop apps (C#, XAML, .NET), improving UI responsiveness by **40%**.</li>
+                                <li>Optimized 35+ REST APIs (ASP.NET MVC, LINQ, multithreading), cutting response times by **70%**.</li>
+                                <li>Refactored microservices with `HttpClient`, increasing POST/GET throughput by **50%**.</li>
+                                <li>Enabled advanced **Generative AI** features by integrating Azure Cognitive and AWS Claude AI APIs.</li>
+                                <li>Automated deployments with CI/CD pipelines using **Azure DevOps & Git**, reducing release cycles by **60%**.</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <!-- Item 3: Cybersecurity Analyst Intern -->
+                    <div class="timeline-item left-item fade-in-up">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card timeline-card">
+                            <span class="timeline-date">06/2019 - 07/2019</span>
+                            <h3 class="timeline-role">Cybersecurity Analyst Intern</h3>
+                            <h4 class="timeline-company">Azure Skynet Solution</h4>
+                            <p class="timeline-location"><i data-lucide="map-pin"></i> Bangalore, India</p>
+                            <ul class="timeline-bullets">
+                                <li>Enhanced network security by **40%** through comprehensive evaluations.</li>
+                                <li>Conducted **28 security assessments**, vulnerability scans, and penetration tests.</li>
+                                <li>Remediated 70+ vulnerabilities using industry-standard mitigation strategies.</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <!-- Item 4: Network Engineer Intern -->
+                    <div class="timeline-item right-item fade-in-up">
+                        <div class="timeline-dot"></div>
+                        <div class="glass-card timeline-card">
+                            <span class="timeline-date">07/2018 - 08/2018</span>
+                            <h3 class="timeline-role">Network Engineer Intern</h3>
+                            <h4 class="timeline-company">Nokia Communications LTD</h4>
+                            <p class="timeline-location"><i data-lucide="map-pin"></i> Bangalore, India</p>
+                            <ul class="timeline-bullets">
+                                <li>Supported 5G hardware communication design projects.</li>
+                                <li>Enhanced antenna communication and network latency with robust, scalable 5G hardware solutions.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+
+
+        <!-- Skills Section -->
+        <section id="skills" class="skills-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Core Capabilities</span>
+                    <h2 class="section-title">Technical Expertise</h2>
+                    <p class="section-subtitle">Categorized skills acquired through 5+ years of enterprise engineering.</p>
+                </div>
+                
+                <div class="skills-grid">
+                    <!-- Category 1: Desktop & Backend Core -->
+                    <div class="glass-card skill-card-group fade-in-up">
+                        <div class="card-icon-wrapper">
+                            <i data-lucide="monitor" class="skill-icon"></i>
+                        </div>
+                        <h3>Desktop & Core Dev</h3>
+                        <p class="skill-group-desc">Desktop GUI application engineering and C# core logic.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag-item">C#</span>
+                            <span class="skill-tag-item">WPF</span>
+                            <span class="skill-tag-item">XAML</span>
+                            <span class="skill-tag-item">.NET Framework</span>
+                            <span class="skill-tag-item">.NET Core</span>
+                            <span class="skill-tag-item">Multithreading</span>
+                            <span class="skill-tag-item">JSON/XML</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Category 2: Web, APIs & DB -->
+                    <div class="glass-card skill-card-group fade-in-up delay-1">
+                        <div class="card-icon-wrapper">
+                            <i data-lucide="globe" class="skill-icon"></i>
+                        </div>
+                        <h3>Web & Backend APIs</h3>
+                        <p class="skill-group-desc">REST API development, database optimization, and web servers.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag-item">ASP.NET MVC</span>
+                            <span class="skill-tag-item">RESTful APIs</span>
+                            <span class="skill-tag-item">LINQ</span>
+                            <span class="skill-tag-item">SQL</span>
+                            <span class="skill-tag-item">Entity Framework</span>
+                            <span class="skill-tag-item">Microservices</span>
+                            <span class="skill-tag-item">IIS</span>
+                            <span class="skill-tag-item">WCF</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Category 3: Cloud & DevOps -->
+                    <div class="glass-card skill-card-group fade-in-up delay-2">
+                        <div class="card-icon-wrapper">
+                            <i data-lucide="cloud" class="skill-icon"></i>
+                        </div>
+                        <h3>Cloud & DevOps</h3>
+                        <p class="skill-group-desc">Continuous deployment pipelines and cloud infrastructure administration.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag-item">Azure DevOps</span>
+                            <span class="skill-tag-item">Git</span>
+                            <span class="skill-tag-item">AWS</span>
+                            <span class="skill-tag-item">Azure Static Web Apps</span>
+                            <span class="skill-tag-item">CI/CD Pipelines</span>
+                            <span class="skill-tag-item">Gradle/Maven</span>
+                            <span class="skill-tag-item">Agile Methodologies</span>
+                        </div>
+                    </div>
+                    
+                    <!-- Category 4: AI & Specialized -->
+                    <div class="glass-card skill-card-group fade-in-up delay-3">
+                        <div class="card-icon-wrapper">
+                            <i data-lucide="cpu" class="skill-icon"></i>
+                        </div>
+                        <h3>AI & Emerging Tech</h3>
+                        <p class="skill-group-desc">Applying Large Language Models and cybersecurity practices in systems.</p>
+                        <div class="skill-tags">
+                            <span class="skill-tag-item">Generative AI</span>
+                            <span class="skill-tag-item">AWS Claude API</span>
+                            <span class="skill-tag-item">Azure Cognitive Services</span>
+                            <span class="skill-tag-item">Python</span>
+                            <span class="skill-tag-item">Vulnerability Assessment</span>
+                            <span class="skill-tag-item">Penetration Testing</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects" class="projects-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Showcase</span>
+                    <h2 class="section-title">Key Projects</h2>
+                    <p class="section-subtitle">Real-world applications delivering enterprise-grade business value.</p>
+                </div>
+                
+                <div class="projects-grid">
+                    <!-- Project 1 -->
+                    <div class="glass-card project-card fade-in-up" onclick="openProjectModal('workspace')">
+                        <div class="project-image-placeholder">
+                            <div class="img-gradient-overlay"></div>
+                            <i data-lucide="activity" class="project-category-icon"></i>
+                            <span class="project-tag-badge">Clinical Imaging</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Advanced Visualization Workspace (Philips ISP 13)</h3>
+                            <p class="project-excerpt">Enterprise multimodality radiology workspace integrating AI diagnostics and 3D medical image rendering (CT/MRI).</p>
+                            <div class="project-tech-tags">
+                                <span>C#</span>
+                                <span>WPF</span>
+                                <span>.NET</span>
+                                <span>AI Integration</span>
+                            </div>
+                            <span class="read-more-link">View Project Details <i data-lucide="chevron-right"></i></span>
+                        </div>
+                    </div>
+
+                    <!-- Project 2 -->
+                    <div class="glass-card project-card fade-in-up delay-1" onclick="openProjectModal('aidt')">
+                        <div class="project-image-placeholder">
+                            <div class="img-gradient-overlay"></div>
+                            <i data-lucide="cpu" class="project-category-icon"></i>
+                            <span class="project-tag-badge">Process Automation</span>
+                        </div>
+                        <div class="project-info">
+                            <h3>Automation Identification Diagnostic Tool (AIDT)</h3>
+                            <p class="project-excerpt">Accenture workflow analytics desktop agent that records user actions and identifies process automation opportunities.</p>
+                            <div class="project-tech-tags">
+                                <span>C#</span>
+                                <span>WPF</span>
+                                <span>.NET Core</span>
+                                <span>Process Mining</span>
+                            </div>
+                            <span class="read-more-link">View Project Details <i data-lucide="chevron-right"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Homelab Section -->
+        <section id="homelab" class="homelab-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Self-Hosted</span>
+                    <h2 class="section-title">Homelab & Media Infrastructure</h2>
+                    <p class="section-subtitle">Containerized home server running on Raspberry Pi 3B architecture.</p>
+                </div>
+                
+                <div class="homelab-layout-grid">
+                    <!-- Column 1: Core Host details -->
+                    <div class="glass-card homelab-host-card fade-in-up">
+                        <div class="panel-header">
+                            <i data-lucide="server" class="panel-icon"></i>
+                            <h3>HOST SPECS & OS</h3>
+                        </div>
+                        <div class="host-details-body">
+                            <div class="host-badge">
+                                <span class="host-os-tag">CasaOS (Debian)</span>
+                            </div>
+                            <p class="host-spec-desc">
+                                A self-hosted home media server utilizing <strong>CasaOS</strong> as the primary operating system layer on low-power <strong>Raspberry Pi 3B</strong> hardware. Deployed 24/7 in a local area network to manage secure storage and network services.
+                            </p>
+                            <ul class="host-spec-list">
+                                <li>
+                                    <span class="spec-name">Hardware:</span>
+                                    <span class="spec-val">Raspberry Pi 3B (ARM Cortex-A53)</span>
+                                </li>
+                                <li>
+                                    <span class="spec-name">Base OS:</span>
+                                    <span class="spec-val">Debian GNU/Linux</span>
+                                </li>
+                                <li>
+                                    <span class="spec-name">System Layer:</span>
+                                    <span class="spec-val">CasaOS Docker virtualization</span>
+                                </li>
+                                <li>
+                                    <span class="spec-name">Storage config:</span>
+                                    <span class="spec-val">Modular USB storage bind-mounts</span>
+                                </li>
+                            </ul>
+                            
+                            <div class="download-action" style="margin-top: 32px;">
+                                <a href="assets/docs/Homelab_Media_Server_Documentation.pdf" download class="btn btn-primary btn-block">
+                                    Download Homelab Docs <i data-lucide="download"></i>
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Column 2: Containers Fleet list -->
+                    <div class="homelab-fleet-panel fade-in-up delay-1">
+                        <h3 class="fleet-title">Active Container Services</h3>
+                        
+                        <div class="fleet-grid">
+                            <!-- Container 1: Pi-hole -->
+                            <div class="glass-card container-card">
+                                <div class="container-card-header">
+                                    <div class="status-indicator">
+                                        <span class="status-ring active-ring"></span>
+                                        <span class="status-text">ACTIVE</span>
+                                    </div>
+                                    <h4 class="container-card-title">Pi-hole</h4>
+                                </div>
+                                <p class="container-card-desc">Network-wide ad-blocking DNS server, screening telemetry requests and tracking domains locally.</p>
+                            </div>
+                            
+                            <!-- Container 2: Uptime Kuma -->
+                            <div class="glass-card container-card">
+                                <div class="container-card-header">
+                                    <div class="status-indicator">
+                                        <span class="status-ring active-ring"></span>
+                                        <span class="status-text">ACTIVE</span>
+                                    </div>
+                                    <h4 class="container-card-title">Uptime Kuma</h4>
+                                </div>
+                                <p class="container-card-desc">Self-hosted monitoring tool providing ping-status verification, latency logs, and uptime graphs.</p>
+                            </div>
+                            
+                            <!-- Container 3: Tailscale -->
+                            <div class="glass-card container-card">
+                                <div class="container-card-header">
+                                    <div class="status-indicator">
+                                        <span class="status-ring active-ring"></span>
+                                        <span class="status-text">ACTIVE</span>
+                                    </div>
+                                    <h4 class="container-card-title">Tailscale</h4>
+                                </div>
+                                <p class="container-card-desc">Mesh VPN service enabling encrypted tunnel connections for secure remote access without open ports.</p>
+                            </div>
+                            
+                            <!-- Container 4: Emby -->
+                            <div class="glass-card container-card">
+                                <div class="container-card-header">
+                                    <div class="status-indicator">
+                                        <span class="status-ring active-ring"></span>
+                                        <span class="status-text">ACTIVE</span>
+                                    </div>
+                                    <h4 class="container-card-title">EMBY</h4>
+                                </div>
+                                <p class="container-card-desc">Media streaming server cataloging locally stored films, audio tracks, and photos for home network playback.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Quick Info Grids (Design Principles) -->
+                <div class="homelab-info-grid fade-in-up delay-2" style="margin-top: 48px;">
+                    <div class="glass-card info-item-card">
+                        <i data-lucide="zap" class="info-icon"></i>
+                        <h4>Low-Power</h4>
+                        <p>Optimized containers running efficiently on a low-energy Raspberry Pi 3B architecture.</p>
+                    </div>
+                    <div class="glass-card info-item-card">
+                        <i data-lucide="server" class="info-icon"></i>
+                        <h4>Self-Hosted</h4>
+                        <p>Independent hosting environment utilizing Docker containers for reliable isolation.</p>
+                    </div>
+                    <div class="glass-card info-item-card">
+                        <i data-lucide="shield-alert" class="info-icon"></i>
+                        <h4>Ad-Blocking</h4>
+                        <p>Network-wide tracker and ad-blocking powered by local Pi-hole DNS integration.</p>
+                    </div>
+                    <div class="glass-card info-item-card">
+                        <i data-lucide="lock" class="info-icon"></i>
+                        <h4>Secure Access</h4>
+                        <p>Encrypted VPN connection routing via Tailscale and secure Cloudflare Tunnels.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Certifications Section -->
+        <section id="certifications" class="certifications-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Validation</span>
+                    <h2 class="section-title">Professional Credentials</h2>
+                    <p class="section-subtitle">Verified badges proving cloud capabilities and AI fundamentals.</p>
+                </div>
+                
+                <div class="certs-grid">
+                    <!-- Cert 1 -->
+                    <div class="glass-card cert-card fade-in-up">
+                        <div class="cert-badge-visual aws-badge">
+                            <i data-lucide="shield-check" class="cert-shield-icon"></i>
+                            <span class="cert-vendor">AWS</span>
+                        </div>
+                        <div class="cert-info">
+                            <h3>Certified Cloud Practitioner</h3>
+                            <p class="cert-code">Credential ID: CLF-C01</p>
+                            <p class="cert-desc">Validated foundational knowledge of AWS Cloud platform, services, security, pricing, and support models.</p>
+                        </div>
+                    </div>
+                    
+                    <!-- Cert 2 -->
+                    <div class="glass-card cert-card fade-in-up delay-1">
+                        <div class="cert-badge-visual azure-badge">
+                            <i data-lucide="award" class="cert-shield-icon"></i>
+                            <span class="cert-vendor">AZURE</span>
+                        </div>
+                        <div class="cert-info">
+                            <h3>Azure Fundamentals</h3>
+                            <p class="cert-code">Credential ID: AZ-900</p>
+                            <p class="cert-desc">Validated understanding of cloud concepts, Azure core services, management, security, privacy, and compliance.</p>
+                        </div>
+                    </div>
+
+                    <!-- Cert 3 -->
+                    <div class="glass-card cert-card fade-in-up delay-2">
+                        <div class="cert-badge-visual ai-badge">
+                            <i data-lucide="brain" class="cert-shield-icon"></i>
+                            <span class="cert-vendor">AZURE AI</span>
+                        </div>
+                        <div class="cert-info">
+                            <h3>Generative AI Fundamentals</h3>
+                            <p class="cert-code">Credential ID: AI-900</p>
+                            <p class="cert-desc">Validated knowledge of artificial intelligence, machine learning concepts, and common AI workloads in Microsoft Azure.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Section -->
+        <section id="contact" class="contact-section section-padding">
+            <div class="container">
+                <div class="section-header">
+                    <span class="section-tag">Connection</span>
+                    <h2 class="section-title">Get In Touch</h2>
+                    <p class="section-subtitle">Let's connect! Drop me a message or find me on professional networks.</p>
+                </div>
+                
+                <div class="contact-grid">
+                    <!-- Contact Cards -->
+                    <div class="contact-info-cards fade-in-up">
+                        <!-- Card 1 -->
+                        <div class="glass-card contact-info-card">
+                            <div class="info-icon-wrapper">
+                                <i data-lucide="mail"></i>
+                            </div>
+                            <div>
+                                <h4>Email</h4>
+                                <a href="mailto:ramesh980514@gmail.com" class="info-link">ramesh980514@gmail.com</a>
+                            </div>
+                        </div>
+                        
+                        <!-- Card 2 -->
+                        <div class="glass-card contact-info-card">
+                            <div class="info-icon-wrapper">
+                                <i data-lucide="linkedin"></i>
+                            </div>
+                            <div>
+                                <h4>LinkedIn</h4>
+                                <a href="https://linkedin.com/in/ramesh-senthil" target="_blank" rel="noopener noreferrer" class="info-link">ramesh-senthil</a>
+                            </div>
+                        </div>
+
+                        <!-- Card 3 -->
+                        <div class="glass-card contact-info-card">
+                            <div class="info-icon-wrapper">
+                                <i data-lucide="phone"></i>
+                            </div>
+                            <div>
+                                <h4>Location</h4>
+                                <p class="info-text">Bangalore, India</p>
+                            </div>
+                        </div>
+
+                        <!-- Card 4: GitHub -->
+                        <div class="glass-card contact-info-card">
+                            <div class="info-icon-wrapper">
+                                <i data-lucide="github"></i>
+                            </div>
+                            <div>
+                                <h4>GitHub</h4>
+                                <a href="https://github.com/ramesh980514" target="_blank" rel="noopener noreferrer" class="info-link">ramesh980514</a>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Form -->
+                    <div class="glass-card contact-form-wrapper fade-in-up delay-1">
+                        <form id="contactForm" onsubmit="handleFormSubmit(event)">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label for="formName">Name</label>
+                                    <input type="text" id="formName" name="name" required placeholder="John Doe">
+                                </div>
+                                <div class="form-group">
+                                    <label for="formEmail">Email</label>
+                                    <input type="email" id="formEmail" name="email" required placeholder="john@example.com">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="formSubject">Subject</label>
+                                <input type="text" id="formSubject" name="subject" required placeholder="Collaboration / Job Inquiry">
+                            </div>
+                            <div class="form-group">
+                                <label for="formMessage">Message</label>
+                                <textarea id="formMessage" name="message" rows="5" required placeholder="Write your message here..."></textarea>
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block" id="formSubmitBtn">
+                                Send Message <i data-lucide="send"></i>
+                            </button>
+                        </form>
+                        <div id="formSuccessMessage" class="form-feedback-message success-message hidden">
+                            <i data-lucide="check-circle"></i> Message sent successfully! I will get back to you soon.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+    </main>
+
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container footer-container">
+            <p>&copy; 2026 Ramesh Senthil. All rights reserved.</p>
+            <div class="footer-links">
+                <a href="https://github.com/ramesh980514" target="_blank" rel="noopener noreferrer" aria-label="GitHub" class="footer-social-link">
+                    <i data-lucide="github" style="width:18px;height:18px;"></i>
+                    GitHub
+                </a>
+                <a href="https://linkedin.com/in/ramesh-senthil" target="_blank" rel="noopener noreferrer" aria-label="LinkedIn" class="footer-social-link">
+                    <i data-lucide="linkedin" style="width:18px;height:18px;"></i>
+                    LinkedIn
+                </a>
+                <a href="#home" class="footer-social-link">Back to Top <i data-lucide="arrow-up" style="display:inline-block; vertical-align:middle; width:16px;"></i></a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Details Modal (Hidden by default) -->
+    <div class="modal-backdrop hidden" id="projectModal" onclick="closeProjectModal()">
+        <div class="glass-card modal-content" onclick="event.stopPropagation()">
+            <button class="modal-close" onclick="closeProjectModal()" aria-label="Close modal">
+                <i data-lucide="x"></i>
+            </button>
+            <div id="modalBody">
+                <!-- Content injected by JavaScript -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Script Referencing -->
+    <script defer src="assets/js/app.js"></script>
+</body>
+</html>

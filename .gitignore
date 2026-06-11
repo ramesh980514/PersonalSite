@@ -1,0 +1,12 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+*.swp
+
+# Source PDFs (keep only assets/docs/)
+Ramesh's Home Media Server Knowledge Base.pdf
+Ramesh's Homelab & Media Server Documentation.pdf
+RameshResumeV9.pdf
