@@ -945,6 +945,12 @@ a {
     color: #27c93f;
 }
 
+.error-message {
+    background: rgba(255, 85, 85, 0.1);
+    border: 1px solid rgba(255, 85, 85, 0.2);
+    color: #ff5555;
+}
+
 .hidden {
     display: none !important;
 }

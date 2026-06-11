@@ -189,34 +189,62 @@ window.addEventListener("keydown", (e) => {
     }
 });
 
-// 7. Contact Form Simulation
-function handleFormSubmit(event) {
+// 7. Contact Form — Real Web3Forms Submission
+async function handleFormSubmit(event) {
     event.preventDefault();
 
     const form = document.getElementById("contactForm");
     const submitBtn = document.getElementById("formSubmitBtn");
     const successMsg = document.getElementById("formSuccessMessage");
+    const errorMsg = document.getElementById("formErrorMessage");
+    const errorText = document.getElementById("formErrorText");
 
-    // Basic animation indicator
+    // Hide any previously shown feedback messages
+    successMsg.classList.add("hidden");
+    errorMsg.classList.add("hidden");
+
+    // Show loading state on button
     submitBtn.innerHTML = 'Sending... <i data-lucide="loader" style="animation: spin 1s linear infinite;"></i>';
+    submitBtn.disabled = true;
     if (typeof lucide !== "undefined") {
         lucide.createIcons();
     }
-    submitBtn.disabled = true;
 
-    // Simulate net request
-    setTimeout(() => {
-        form.reset();
-        form.classList.add("hidden");
-        successMsg.classList.remove("hidden");
-        
-        // Return submit button state
+    try {
+        const formData = new FormData(form);
+        const response = await fetch("https://api.web3forms.com/submit", {
+            method: "POST",
+            body: formData
+        });
+
+        const data = await response.json();
+
+        if (data.success === true) {
+            // Success: reset form, hide it, show success banner
+            form.reset();
+            form.classList.add("hidden");
+            successMsg.classList.remove("hidden");
+            if (typeof lucide !== "undefined") {
+                lucide.createIcons();
+            }
+        } else {
+            // API returned a failure response
+            const message = data.message || "Submission failed. Please try again or email me directly at ramesh980514@gmail.com.";
+            errorText.textContent = message;
+            errorMsg.classList.remove("hidden");
+        }
+    } catch (err) {
+        // Network or unexpected error
+        errorText.textContent = "A network error occurred. Please check your connection and try again, or email ramesh980514@gmail.com directly.";
+        errorMsg.classList.remove("hidden");
+    } finally {
+        // Restore submit button state regardless of outcome
         submitBtn.innerHTML = 'Send Message <i data-lucide="send"></i>';
         submitBtn.disabled = false;
         if (typeof lucide !== "undefined") {
             lucide.createIcons();
         }
-    }, 1200);
+    }
 }
 
 // 8. Interactive Custom Cursor Trail
