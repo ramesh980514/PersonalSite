@@ -1204,13 +1204,19 @@ a {
         background: var(--bg-secondary);
         flex-direction: column;
         align-items: center;
-        justify-content: center;
+        justify-content: flex-start;
         gap: 40px;
-        padding: 40px;
+        padding: 60px 40px;
         transition: var(--transition-normal);
         z-index: 99;
         backdrop-filter: blur(16px);
         -webkit-backdrop-filter: blur(16px);
+        overflow-y: auto;
+    }
+    
+    .navbar.scrolled .nav-menu {
+        top: 70px;
+        height: calc(100vh - 70px);
     }
     
     .nav-menu.open {
@@ -1237,6 +1243,14 @@ a {
         font-size: 32px;
     }
     
+    .section-subtitle {
+        font-size: 16px;
+    }
+    
+    .section-header {
+        margin-bottom: 40px;
+    }
+    
     .hero-grid {
         grid-template-columns: 1fr;
         gap: 48px;
@@ -1250,6 +1264,11 @@ a {
         flex-direction: column;
     }
     
+    .hero-actions .btn {
+        width: 100%;
+        max-width: 320px;
+    }
+    
     .stats-bar {
         flex-direction: column;
         gap: 24px;
@@ -1259,6 +1278,10 @@ a {
     .stat-divider {
         width: 80%;
         height: 1px;
+    }
+    
+    .certs-grid {
+        grid-template-columns: 1fr;
     }
     
     .contact-grid {
@@ -1274,23 +1297,75 @@ a {
     .contact-form-wrapper {
         padding: 24px;
     }
+    
+    .footer-container {
+        flex-direction: column;
+        gap: 20px;
+        text-align: center;
+    }
 }
 
 @media (max-width: 480px) {
+    .section-padding {
+        padding: 50px 0;
+    }
+
     .hero-title {
         font-size: 32px;
+    }
+
+    .visual-body {
+        padding: 16px;
+        font-size: 12px;
+    }
+    
+    .timeline::after {
+        left: 16px;
+    }
+    
+    .timeline-item {
+        padding-left: 40px;
+    }
+    
+    .timeline-dot {
+        left: 8px !important;
     }
     
     .timeline-card {
         padding: 20px;
     }
+
+    .skill-card-group {
+        padding: 24px;
+    }
+
+    .project-info {
+        padding: 20px;
+    }
+
+    .cert-card {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        padding: 20px;
+        gap: 16px;
+    }
     
+    .modal-backdrop {
+        padding: 12px;
+    }
+
     .modal-content {
         padding: 32px 20px;
     }
     
     .modal-title-h {
         font-size: 24px;
+    }
+
+    .contact-info-card {
+        padding: 16px;
+        gap: 12px;
     }
 }
 
@@ -1754,6 +1829,7 @@ h3.fleet-title {
     .homelab-info-grid {
         grid-template-columns: 1fr;
     }
+    .homelab-host-card,
     .host-node-card,
     .fleet-panel {
         padding: 24px;
