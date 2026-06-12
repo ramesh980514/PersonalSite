@@ -15,7 +15,7 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Request review from Copilot
-        run: gh pr edit ${{ github.event.pull_request.number }} --add-reviewer @copilot
+        run: gh pr edit ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --add-reviewer "@copilot"
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         continue-on-error: true # Non-blocking if Copilot review is not enabled on this repository/org
