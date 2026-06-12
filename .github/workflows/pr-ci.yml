@@ -1,0 +1,53 @@
+name: Pull Request CI
+
+on:
+  pull_request:
+    types: [opened, ready_for_review, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  assign-copilot-reviewer:
+    name: Assign Copilot Reviewer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Request review from Copilot
+        run: gh pr edit ${{ github.event.pull_request.number }} --add-reviewer @copilot
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true # Non-blocking if Copilot review is not enabled on this repository/org
+
+  quality-checks:
+    name: Code Quality & Performance Checks
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for MegaLinter to identify diffs/changes
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+        continue-on-error: true
+
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.13.x
+
+      - name: Run Lighthouse CI
+        run: lhci autorun
+
+      - name: Run Link Checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress --exclude-mail "*.html" "assets/**/*.js" "README.md"
+
+      - name: Run MegaLinter
+        uses: oxsecurity/megalinter/flavors/javascript@v8
+        env:
+          VALIDATE_ALL_CODEBASE: false # Scan only modified files on PR
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
