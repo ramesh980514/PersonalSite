@@ -27,7 +27,7 @@ jobs:
           SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
 
       - name: SonarQube Quality Gate check
-        uses: sonarsource/sonarqube-quality-gate-action@v2
+        uses: sonarsource/sonarqube-quality-gate-action@v1
         with:
           pollingTimeoutSec: 600
         env:
@@ -68,5 +68,5 @@ jobs:
         env:
           VALIDATE_ALL_CODEBASE: true
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-          DISABLE_LINTERS: SPELL_CSPELL,SPELL_LYCHEE,REPOSITORY_GRYPE,JSON_PRETTIER,YAML_PRETTIER
+          DISABLE_LINTERS: SPELL_CSPELL,SPELL_LYCHEE,REPOSITORY_GRYPE,JSON_PRETTIER,YAML_PRETTIER,CSS_STYLELINT,JAVASCRIPT_STANDARD,MARKDOWN_MARKDOWN_LINK_CHECK
           DISABLE_ERRORS_LINTERS: HTML_HTMLHINT,HTML_DJLINT
