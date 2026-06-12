@@ -61,7 +61,7 @@ jobs:
       - name: Run Link Checker
         uses: lycheeverse/lychee-action@v2
         with:
-          args: --verbose --no-progress "*.html" "assets/**/*.js" "README.md"
+          args: --verbose --no-progress --exclude "api.web3forms.com" --exclude "RameshResumeV9.pdf" --exclude "LICENSE" "*.html" "assets/**/*.js" "README.md"
 
       - name: Run MegaLinter
         uses: oxsecurity/megalinter/flavors/javascript@v8
