@@ -16,6 +16,9 @@ jobs:
   integration-pipeline:
     name: Continuous Integration & Checks
     runs-on: ubuntu-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
     steps:
       # 1. Checkout Code
       - name: Checkout Code
@@ -78,18 +81,12 @@ jobs:
 
       # 11. Run SonarQube Analysis (Only on pushes to develop, when secrets are available)
       - name: SonarQube Scan
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        if: ${{ secrets.SONAR_TOKEN != '' && github.event_name == 'push' && github.ref == 'refs/heads/develop' }}
+        if: env.SONAR_TOKEN != '' && github.event_name == 'push' && github.ref == 'refs/heads/develop'
         uses: sonarsource/sonarqube-scan-action@v6
 
       # 12. Run SonarQube Quality Gate Check (Only on pushes to develop, when secrets are available)
       - name: SonarQube Quality Gate Check
-        env:
-          SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-          SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
-        if: ${{ secrets.SONAR_TOKEN != '' && github.event_name == 'push' && github.ref == 'refs/heads/develop' }}
+        if: env.SONAR_TOKEN != '' && github.event_name == 'push' && github.ref == 'refs/heads/develop'
         uses: sonarsource/sonarqube-quality-gate-action@v1
         with:
           pollingTimeoutSec: 600
