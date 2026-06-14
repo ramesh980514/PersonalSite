@@ -1,0 +1,13 @@
+{
+  "name": "ramesh-senthil-portfolio-tests",
+  "version": "1.0.0",
+  "description": "Pre-merge functional E2E tests for Ramesh Senthil's portfolio website",
+  "scripts": {
+    "test": "playwright test",
+    "test:ui": "playwright test --ui"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.49.0",
+    "http-server": "^14.1.1"
+  }
+}
