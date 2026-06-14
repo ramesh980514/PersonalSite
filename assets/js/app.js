@@ -54,9 +54,10 @@ document.addEventListener("DOMContentLoaded", () => {
         mobileToggle.addEventListener("click", () => {
             navMenu.classList.toggle("open");
             const isOpen = navMenu.classList.contains("open");
+            mobileToggle.setAttribute("aria-expanded", isOpen ? "true" : "false");
             mobileToggle.innerHTML = isOpen 
-                ? '<i data-lucide="x"></i>' 
-                : '<i data-lucide="menu"></i>';
+                ? '<i data-lucide="x" aria-hidden="true"></i>' 
+                : '<i data-lucide="menu" aria-hidden="true"></i>';
             if (typeof lucide !== "undefined") {
                 lucide.createIcons();
             }
@@ -67,7 +68,8 @@ document.addEventListener("DOMContentLoaded", () => {
         navLinks.forEach(link => {
             link.addEventListener("click", () => {
                 navMenu.classList.remove("open");
-                mobileToggle.innerHTML = '<i data-lucide="menu"></i>';
+                mobileToggle.setAttribute("aria-expanded", "false");
+                mobileToggle.innerHTML = '<i data-lucide="menu" aria-hidden="true"></i>';
                 if (typeof lucide !== "undefined") {
                     lucide.createIcons();
                 }
@@ -101,13 +103,20 @@ document.addEventListener("DOMContentLoaded", () => {
 
     window.addEventListener("scroll", () => {
         let currentSectionId = "";
-        sections.forEach(section => {
-            const sectionTop = section.offsetTop - 120;
-            const sectionHeight = section.offsetHeight;
-            if (window.scrollY >= sectionTop && window.scrollY < sectionTop + sectionHeight) {
-                currentSectionId = section.getAttribute("id");
-            }
-        });
+        const scrollPosition = window.scrollY;
+        const isAtBottom = (window.innerHeight + scrollPosition) >= (document.documentElement.scrollHeight - 10);
+
+        if (isAtBottom && sections.length > 0) {
+            currentSectionId = sections[sections.length - 1].getAttribute("id");
+        } else {
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop - 120;
+                const sectionHeight = section.offsetHeight;
+                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    currentSectionId = section.getAttribute("id");
+                }
+            });
+        }
 
         navLinks.forEach(link => {
             link.classList.remove("active");
@@ -120,9 +129,25 @@ document.addEventListener("DOMContentLoaded", () => {
     // Initialize premium animations & effects
     initCustomCursor();
     initTypingAnimation();
+    initThemeToggle();
 });
 
+// Helper to prevent DOM injection vulnerabilities
+function escapeHTML(str) {
+    return String(str).replace(/[&<>'"]/g, 
+        tag => ({
+            '&': '&amp;',
+            '<': '&lt;',
+            '>': '&gt;',
+            "'": '&#39;',
+            '"': '&quot;'
+        }[tag] || tag)
+    );
+}
+
 // 6. Project Details Modal Functions
+let lastFocusedElement = null;
+
 function openProjectModal(projectId) {
     const data = projectData[projectId];
     if (!data) return;
@@ -130,28 +155,31 @@ function openProjectModal(projectId) {
     const modal = document.getElementById("projectModal");
     const modalBody = document.getElementById("modalBody");
 
+    // Save active element to return focus later
+    lastFocusedElement = document.activeElement;
+
     // Construct modal HTML content
-    let techPillsHtml = data.technologies.map(tech => `<span class="modal-tech-pill">${tech}</span>`).join("");
-    let bulletsHtml = data.keyResults.map(bullet => `<li>${bullet}</li>`).join("");
+    let techPillsHtml = data.technologies.map(tech => `<span class="modal-tech-pill">${escapeHTML(tech)}</span>`).join("");
+    let bulletsHtml = data.keyResults.map(bullet => `<li>${escapeHTML(bullet)}</li>`).join("");
 
     modalBody.innerHTML = `
         <div class="modal-header-section">
-            <span class="modal-category">${data.category}</span>
-            <h3 class="modal-title-h text-gradient">${data.title}</h3>
+            <span class="modal-category">${escapeHTML(data.category)}</span>
+            <h3 class="modal-title-h text-gradient" id="modalTitle">${escapeHTML(data.title)}</h3>
             <div class="modal-meta-row">
                 <div class="modal-meta-item">
-                    <i data-lucide="briefcase"></i>
-                    <span>${data.company}</span>
+                    <i data-lucide="briefcase" aria-hidden="true"></i>
+                    <span>${escapeHTML(data.company)}</span>
                 </div>
                 <div class="modal-meta-item">
-                    <i data-lucide="calendar"></i>
-                    <span>${data.timeline}</span>
+                    <i data-lucide="calendar" aria-hidden="true"></i>
+                    <span>${escapeHTML(data.timeline)}</span>
                 </div>
             </div>
         </div>
         <div class="modal-body-section">
             <h4>Project Overview</h4>
-            <p>${data.overview}</p>
+            <p>${escapeHTML(data.overview)}</p>
             
             <h4>Key Contributions & Business Outcomes</h4>
             <ul class="modal-list">
@@ -169,6 +197,12 @@ function openProjectModal(projectId) {
     modal.classList.remove("hidden");
     document.body.style.overflow = "hidden";
 
+    // Set focus to the modal close button for screen reader convenience
+    const closeBtn = modal.querySelector(".modal-close");
+    if (closeBtn) {
+        closeBtn.focus();
+    }
+
     // Initialize icons injected in the modal
     if (typeof lucide !== "undefined") {
         lucide.createIcons();
@@ -177,9 +211,16 @@ function openProjectModal(projectId) {
 
 function closeProjectModal() {
     const modal = document.getElementById("projectModal");
+    if (modal.classList.contains("hidden")) return;
+
     modal.classList.add("hidden");
     // Enable scrolling on body
     document.body.style.overflow = "auto";
+
+    // Return focus to the element that triggered the modal
+    if (lastFocusedElement) {
+        lastFocusedElement.focus();
+    }
 }
 
 // Close modal when pressing 'Escape' key
@@ -254,12 +295,12 @@ function initCustomCursor() {
     
     if (!cursorDot || !cursorOutline) return;
 
-    const hasMouse = window.matchMedia("(pointer: fine)").matches;
-    if (!hasMouse) return;
-
     // Hide on start to prevent sudden jump/pop
     cursorDot.style.opacity = "0";
     cursorOutline.style.opacity = "0";
+
+    const hasMouse = window.matchMedia("(pointer: fine)").matches;
+    if (!hasMouse) return;
 
     let mouseX = 0;
     let mouseY = 0;
@@ -365,4 +406,42 @@ function initTypingAnimation() {
     }
 
     setTimeout(type, 1000);
+}
+
+// 11. Theme Mode Toggle Logic
+function initThemeToggle() {
+    const themeToggle = document.getElementById("themeToggle");
+    if (!themeToggle) return;
+
+    // Determine current theme
+    const isLight = document.documentElement.classList.contains("light-theme");
+    updateThemeToggle(isLight);
+
+    themeToggle.addEventListener("click", () => {
+        const currentlyLight = document.documentElement.classList.toggle("light-theme");
+        try {
+            localStorage.setItem("theme", currentlyLight ? "light" : "dark");
+        } catch (e) {
+            console.warn("Could not save theme preference to localStorage:", e);
+        }
+        updateThemeToggle(currentlyLight);
+    });
+
+    function updateThemeToggle(isLightTheme) {
+        // If it's light theme, show Moon icon (click for dark mode)
+        // If it's dark theme, show Sun icon (click for light mode)
+        themeToggle.innerHTML = isLightTheme 
+            ? '<i data-lucide="moon" aria-hidden="true"></i>' 
+            : '<i data-lucide="sun" aria-hidden="true"></i>';
+        
+        // Update the ARIA label dynamically for accessibility
+        themeToggle.setAttribute(
+            "aria-label", 
+            isLightTheme ? "Switch to Dark Theme" : "Switch to Light Theme"
+        );
+
+        if (typeof lucide !== "undefined") {
+            lucide.createIcons();
+        }
+    }
 }
