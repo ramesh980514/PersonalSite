@@ -23,6 +23,28 @@
     <!-- CSS Stylesheet -->
     <link rel="stylesheet" href="assets/css/style.css">
     
+    <!-- Theme setup script to prevent flash -->
+    <script>
+        (function() {
+            try {
+                const savedTheme = localStorage.getItem('theme') || 'dark';
+                if (savedTheme === 'light') {
+                    document.documentElement.classList.add('light-theme');
+                }
+            } catch (e) {
+                console.warn("localStorage is not accessible:", e);
+            }
+        })();
+    </script>
+    <noscript>
+        <style>
+            .fade-in-up {
+                opacity: 1 !important;
+                transform: none !important;
+            }
+        </style>
+    </noscript>
+    
     <!-- Lucide Icons CDN -->
     <script src="https://cdn.jsdelivr.net/npm/lucide@0.475.0/dist/umd/lucide.min.js"></script>
 </head>
@@ -54,10 +76,15 @@
                     <i data-lucide="download"></i> Resume
                 </a>
             </nav>
-            
-            <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu">
-                <i data-lucide="menu"></i>
-            </button>
+            <div class="nav-right">
+                <button class="theme-toggle" id="themeToggle" aria-label="Toggle Theme Mode">
+                    <i data-lucide="sun" aria-hidden="true"></i>
+                </button>
+                
+                <button class="mobile-toggle" id="mobileToggle" aria-label="Toggle Navigation Menu" aria-controls="navMenu" aria-expanded="false">
+                    <i data-lucide="menu" aria-hidden="true"></i>
+                </button>
+            </div>
         </div>
     </header>
 
@@ -600,7 +627,6 @@
                         <form id="contactForm" onsubmit="handleFormSubmit(event)">
                             <!-- Web3Forms hidden fields -->
                             <input type="hidden" name="access_key" value="b652d6d0-6196-46c0-8fcd-3af731c4772b">
-                            <input type="hidden" name="subject" value="New Message from Portfolio">
                             <input type="hidden" name="from_name" value="Ramesh Senthil Portfolio">
                             <!-- Honeypot anti-spam field -->
                             <input type="checkbox" name="botcheck" class="hidden" style="display:none">
@@ -659,10 +685,10 @@
     </footer>
 
     <!-- Details Modal (Hidden by default) -->
-    <div class="modal-backdrop hidden" id="projectModal" onclick="closeProjectModal()">
-        <div class="glass-card modal-content" onclick="event.stopPropagation()">
+    <div class="modal-backdrop hidden" id="projectModal" onclick="closeProjectModal()" role="presentation">
+        <div class="glass-card modal-content" onclick="event.stopPropagation()" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
             <button class="modal-close" onclick="closeProjectModal()" aria-label="Close modal">
-                <i data-lucide="x"></i>
+                <i data-lucide="x" aria-hidden="true"></i>
             </button>
             <div id="modalBody">
                 <!-- Content injected by JavaScript -->
