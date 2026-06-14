@@ -19,7 +19,9 @@
     --text-muted: #627289;
     
     --accent-cyan: #00f2fe;
+    --accent-cyan-rgb: 0, 242, 254;
     --accent-blue: #4facfe;
+    --accent-blue-rgb: 79, 172, 254;
     --accent-gradient: linear-gradient(135deg, #00f2fe 0%, #4facfe 100%);
     --accent-gradient-hover: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
     
@@ -36,6 +38,112 @@
     
     --shadow-glow: 0 0 25px rgba(0, 242, 254, 0.15);
     --shadow-card: 0 15px 35px rgba(0, 0, 0, 0.2);
+}
+
+/* Light Theme Variables */
+html.light-theme {
+    --bg-primary: #f8fafc;
+    --bg-secondary: #f1f5f9;
+    --bg-glass: rgba(255, 255, 255, 0.75);
+    --bg-glass-hover: rgba(255, 255, 255, 0.95);
+    --border-glass: rgba(15, 23, 42, 0.08);
+    --border-glass-active: rgba(14, 165, 233, 0.3);
+    
+    --text-primary: #0f172a;
+    --text-secondary: #475569;
+    --text-muted: #64748b;
+    
+    --accent-cyan: #0284c7;
+    --accent-cyan-rgb: 2, 132, 199;
+    --accent-blue: #2563eb;
+    --accent-blue-rgb: 37, 99, 235;
+    --accent-gradient: linear-gradient(135deg, #0ea5e9 0%, #2563eb 100%);
+    --accent-gradient-hover: linear-gradient(135deg, #2563eb 0%, #0ea5e9 100%);
+    
+    --shadow-glow: 0 0 25px rgba(37, 99, 235, 0.1);
+    --shadow-card: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+/* Light Theme Component Overrides */
+html.light-theme .navbar {
+    background: rgba(248, 250, 252, 0.5);
+}
+
+html.light-theme .navbar.scrolled {
+    background: rgba(248, 250, 252, 0.85);
+    box-shadow: 0 10px 30px rgba(15, 23, 42, 0.05);
+}
+
+html.light-theme ::-webkit-scrollbar-track {
+    background: var(--bg-primary);
+}
+
+html.light-theme ::-webkit-scrollbar-thumb {
+    background: rgba(15, 23, 42, 0.15);
+    border: 2px solid var(--bg-primary);
+}
+
+html.light-theme ::-webkit-scrollbar-thumb:hover {
+    background: rgba(37, 99, 235, 0.4);
+}
+
+html.light-theme .timeline::after {
+    background: linear-gradient(to bottom, var(--accent-cyan) 0%, var(--accent-blue) 50%, rgba(15, 23, 42, 0.05) 100%);
+}
+
+html.light-theme .host-spec-list li {
+    background: rgba(0, 0, 0, 0.02);
+}
+
+html.light-theme .form-group input,
+html.light-theme .form-group textarea {
+    background: rgba(0, 0, 0, 0.02);
+    color: var(--text-primary);
+}
+
+html.light-theme .form-group input:focus,
+html.light-theme .form-group textarea:focus {
+    background: rgba(0, 0, 0, 0.04);
+    box-shadow: 0 0 10px rgba(37, 99, 235, 0.1);
+}
+
+html.light-theme .btn-primary {
+    color: #ffffff;
+}
+
+html.light-theme .btn-primary:hover {
+    box-shadow: 0 0 20px rgba(37, 99, 235, 0.4);
+}
+
+html.light-theme .btn-secondary {
+    background: rgba(15, 23, 42, 0.04);
+    color: var(--text-primary);
+}
+
+html.light-theme .btn-secondary:hover {
+    background: rgba(15, 23, 42, 0.08);
+}
+
+html.light-theme .skill-tag-item {
+    background: rgba(15, 23, 42, 0.03);
+}
+
+html.light-theme .modal-tech-pill {
+    background: rgba(15, 23, 42, 0.03);
+}
+
+html.light-theme .modal-close {
+    background: rgba(15, 23, 42, 0.03);
+    color: var(--text-secondary);
+}
+
+html.light-theme .modal-close:hover {
+    background: rgba(15, 23, 42, 0.08);
+    color: var(--accent-cyan);
+}
+
+html.light-theme .glow-bg {
+    opacity: 0.06;
 }
 
 body {
@@ -200,8 +308,8 @@ a {
     font-weight: 600;
     text-transform: uppercase;
     letter-spacing: 0.1em;
-    background: linear-gradient(135deg, rgba(0, 242, 254, 0.15) 0%, rgba(79, 172, 254, 0.15) 100%);
-    border: 1px solid rgba(0, 242, 254, 0.2);
+    background: linear-gradient(135deg, rgba(var(--accent-cyan-rgb), 0.15) 0%, rgba(var(--accent-blue-rgb), 0.15) 100%);
+    border: 1px solid rgba(var(--accent-cyan-rgb), 0.2);
     color: var(--accent-cyan);
     padding: 6px 16px;
     border-radius: 50px;
@@ -229,8 +337,8 @@ a {
 
 .badge {
     display: inline-block;
-    background: rgba(0, 242, 254, 0.1);
-    border: 1px solid rgba(0, 242, 254, 0.2);
+    background: rgba(var(--accent-cyan-rgb), 0.1);
+    border: 1px solid rgba(var(--accent-cyan-rgb), 0.2);
     color: var(--accent-cyan);
     font-size: 14px;
     font-weight: 600;
@@ -322,6 +430,40 @@ a {
     font-size: 14px;
     border-radius: var(--radius-sm);
 }
+.nav-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.theme-toggle {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid var(--border-glass);
+    color: var(--text-primary);
+    width: 40px;
+    height: 40px;
+    border-radius: var(--radius-sm);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: var(--transition-normal);
+}
+
+.theme-toggle:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--accent-cyan);
+    color: var(--accent-cyan);
+    transform: translateY(-2px);
+}
+
+html.light-theme .theme-toggle {
+    background: rgba(15, 23, 42, 0.04);
+}
+
+html.light-theme .theme-toggle:hover {
+    background: rgba(15, 23, 42, 0.08);
+}
 
 .mobile-toggle {
     display: none;
@@ -370,19 +512,22 @@ a {
     justify-content: center;
 }
 
+/* Ensure the hero visual terminal card remains dark in both themes for syntax readability */
 .visual-card {
     width: 100%;
     max-width: 440px;
     overflow: hidden;
+    background: #0b0f19 !important;
+    border-color: rgba(255, 255, 255, 0.08) !important;
 }
 
 .visual-header {
-    background: rgba(255, 255, 255, 0.03);
+    background: rgba(255, 255, 255, 0.02) !important;
     padding: 12px 20px;
     display: flex;
     align-items: center;
     gap: 8px;
-    border-bottom: 1px solid var(--border-glass);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08) !important;
 }
 
 .dot {
@@ -398,7 +543,7 @@ a {
 .visual-title {
     font-family: monospace;
     font-size: 13px;
-    color: var(--text-muted);
+    color: #627289 !important;
     margin-left: 8px;
 }
 
@@ -407,11 +552,16 @@ a {
     font-family: monospace;
     font-size: 14px;
     line-height: 1.5;
-    background: rgba(0, 0, 0, 0.2);
+    background: #05070c !important;
+    color: #abb2bf !important; /* Fix light-theme text color inheritance bug */
 }
 
 .json-key { color: #80cbc4; }
 .json-val { color: #c3e88d; }
+
+.visual-card .cursor-blink {
+    color: #00f2fe !important; /* Force neon cyan for typing cursor on dark code card */
+}
 
 /* Stats Bar */
 .stats-bar {
@@ -589,8 +739,8 @@ a {
     width: 48px;
     height: 48px;
     border-radius: var(--radius-sm);
-    background: rgba(0, 242, 254, 0.1);
-    border: 1px solid rgba(0, 242, 254, 0.15);
+    background: rgba(var(--accent-cyan-rgb), 0.1);
+    border: 1px solid rgba(var(--accent-cyan-rgb), 0.15);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -736,7 +886,7 @@ a {
 
 .project-tech-tags span {
     font-size: 11px;
-    background: rgba(0, 242, 254, 0.06);
+    background: rgba(var(--accent-cyan-rgb), 0.06);
     color: var(--accent-cyan);
     padding: 2px 8px;
     border-radius: 4px;
@@ -861,8 +1011,8 @@ a {
     width: 48px;
     height: 48px;
     border-radius: var(--radius-sm);
-    background: rgba(0, 242, 254, 0.08);
-    border: 1px solid rgba(0, 242, 254, 0.12);
+    background: rgba(var(--accent-cyan-rgb), 0.08);
+    border: 1px solid rgba(var(--accent-cyan-rgb), 0.12);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -932,6 +1082,12 @@ a {
     font-family: var(--font-body);
     font-size: 14px;
     transition: var(--transition-fast);
+}
+
+.form-group input::placeholder,
+.form-group textarea::placeholder {
+    color: var(--text-muted);
+    opacity: 0.7;
 }
 
 .form-group input:focus, .form-group textarea:focus {

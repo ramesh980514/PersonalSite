@@ -1,0 +1,100 @@
+name: CI/CD Pipeline
+
+on:
+  push:
+    branches:
+      - develop
+  pull_request:
+    types: [opened, ready_for_review, synchronize, reopened]
+
+permissions:
+  contents: write
+  pull-requests: write
+  issues: write
+
+jobs:
+  integration-pipeline:
+    name: Continuous Integration & Checks
+    runs-on: ubuntu-latest
+    env:
+      SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+      SONAR_HOST_URL: ${{ secrets.SONAR_HOST_URL }}
+    steps:
+      # 1. Checkout Code
+      - name: Checkout Code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0 # Required for MegaLinter and SonarQube
+
+      # 2. Run MegaLinter (Code Formatting & Static Linting)
+      # VALIDATE_ALL_CODEBASE is true only on push to develop, false on PRs to scan modified files
+      - name: Run MegaLinter
+        uses: oxsecurity/megalinter/flavors/javascript@v8
+        env:
+          VALIDATE_ALL_CODEBASE: ${{ github.event_name == 'push' }}
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          DISABLE_LINTERS: SPELL_CSPELL,SPELL_LYCHEE,REPOSITORY_GRYPE,JSON_PRETTIER,YAML_PRETTIER,CSS_STYLELINT,JAVASCRIPT_STANDARD,MARKDOWN_MARKDOWN_LINK_CHECK
+          DISABLE_ERRORS_LINTERS: HTML_HTMLHINT,HTML_DJLINT
+
+      # 3. Run Link Checker
+      - name: Run Link Checker
+        uses: lycheeverse/lychee-action@v2
+        with:
+          args: --verbose --no-progress --exclude "api.web3forms.com" --exclude "RameshResumeV9.pdf" --exclude "LICENSE" "*.html" "assets/**/*.js" "README.md"
+
+      # 4. Set up Node.js
+      - name: Set up Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: 20
+          cache: 'npm'
+        continue-on-error: true
+
+      # 5. Install NPM Dependencies
+      - name: Install dependencies
+        run: npm install
+
+      # 6. Install Playwright Browsers & OS Dependencies
+      - name: Install Playwright Browsers
+        run: npx playwright install --with-deps
+
+      # 7. Run Playwright E2E Functional Tests
+      - name: Run Playwright E2E Tests
+        run: npx playwright test
+
+      # 8. Upload Playwright Test Report Artifact
+      - name: Upload Playwright Test Report
+        uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 30
+
+      # 9. Install Lighthouse CI CLI
+      - name: Install Lighthouse CI
+        run: npm install -g @lhci/cli@0.13.x
+
+      # 10. Run Lighthouse CI (Performance, Accessibility, SEO)
+      - name: Run Lighthouse CI
+        run: lhci autorun
+
+      # 11. Run SonarQube Analysis (Only on pushes to develop, when secrets are available)
+      - name: SonarQube Scan
+        if: env.SONAR_TOKEN != '' && github.event_name == 'push' && github.ref == 'refs/heads/develop'
+        uses: sonarsource/sonarqube-scan-action@v6
+
+      # 12. Run SonarQube Quality Gate Check (Only on pushes to develop, when secrets are available)
+      - name: SonarQube Quality Gate Check
+        if: env.SONAR_TOKEN != '' && github.event_name == 'push' && github.ref == 'refs/heads/develop'
+        uses: sonarsource/sonarqube-quality-gate-action@v1
+        with:
+          pollingTimeoutSec: 600
+
+      # 13. Assign Copilot Reviewer (Only on pull requests)
+      - name: Request review from Copilot
+        if: ${{ github.event_name == 'pull_request' }}
+        run: gh pr edit ${{ github.event.pull_request.number }} --repo ${{ github.repository }} --add-reviewer "@copilot"
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        continue-on-error: true
