@@ -1239,6 +1239,10 @@ a {
         padding: 80px 0;
     }
     
+    .hero-section {
+        padding-top: 140px;
+    }
+    
     .section-title {
         font-size: 32px;
     }
@@ -1308,6 +1312,10 @@ a {
 @media (max-width: 480px) {
     .section-padding {
         padding: 50px 0;
+    }
+
+    .hero-section {
+        padding-top: 120px;
     }
 
     .hero-title {
@@ -1925,8 +1933,8 @@ h3.fleet-title {
 
 @media (pointer: fine) {
     /* Hide default cursor on desktop */
-    html, body, a, button, .project-card, input, textarea, select {
-        cursor: none;
+    *, *:hover {
+        cursor: none !important;
     }
     
     .cursor-dot {
